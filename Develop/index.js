@@ -10,7 +10,7 @@ inquirer
     },
     {
         type: 'input',
-        name: 'projectDescription",
+        name: 'projectDescription',
         message: 'Project Description:',
     },
     {
@@ -29,28 +29,18 @@ inquirer
         message: 'List your collaborators:'
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'license',
         message: 'Please select a license:',
-        choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense']
-
+        choices: [
+            'GNU AGPLv3', 
+            'GNU GPLv3', 
+            'GNU LGPLv3', 
+            'Mozilla Public License 2.0', 
+            'Apache License 2.0', 
+            'MIT License', 
+            'Boost Software License 1.0', 
+            'The Unlicense',
+        ],
     },
   ])
-  
-  
-// array of questions for user
-const questions = [
-
-];
-
-// function to write README file
-function writeToFile(fileName, data) {
-}
-
-// function to initialize program
-function init() {
-
-}
-
-// function call to initialize program
-init();
