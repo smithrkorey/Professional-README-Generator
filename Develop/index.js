@@ -48,17 +48,17 @@ const questions = [
         ]},
     {
         type: 'input',
-        name: 'Tests',
+        name: 'tests',
         message: 'Please provide instructions on how to run tests on the application:'
     },
     {
         type: 'input',
-        name: 'Question1',
+        name: 'question1',
         message: 'What is your GitHub username?'
     },
     {
         type: 'input',
-        name: 'Question2',
+        name: 'question2',
         message: 'What is your email address?'
     },
   ];
