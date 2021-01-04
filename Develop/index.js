@@ -1,5 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const util = require('util') 
 
 //modules
 const generateMarkdown = require('./utils/generateMarkdown.js');
@@ -8,12 +9,12 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 const questions = [
     {
         type: 'input',
-        name: 'projectTitle',
+        name: 'title',
         message: 'What is the title of your project?',
     },
     {
         type: 'input',
-        name: 'projectDescription',
+        name: 'description',
         message: 'Project Description:',
     },
     {
@@ -52,8 +53,13 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'Questions',
-        message: 'Please provide instructions on how to reach you with additional questions:'
+        name: 'Question1',
+        message: 'What is your GitHub username?'
+    },
+    {
+        type: 'input',
+        name: 'Question2',
+        message: 'What is your email address?'
     },
   ];
 
@@ -69,11 +75,11 @@ function writeToFile(filename, data) {
 
 // function to initialize program
 function init() {
-prompt(questions).then(answers => {
-    const response = generateMarkdown(answers);
-    console.log(answers);
-    writeToFile("README.md", response);
-})
-};
+    var prompt = inquirer.createPromptModule();
+    prompt(questions).then(answers => {
+        const response = generateMarkdown(answers);
+        console.log(answers);
+        writeToFile("README.md", response);
+      })};
 
 init();
