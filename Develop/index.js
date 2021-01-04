@@ -1,8 +1,11 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-inquirer
-  .prompt([
+//modules
+const generateMarkdown = require('./utils/generateMarkdown.js');
+
+// array of questions for user
+const questions = [
     {
         type: 'input',
         name: 'projectTitle',
@@ -26,7 +29,7 @@ inquirer
     {
         type: 'input',
         name: 'contributing',
-        message: 'List your collaborators:'
+        message: 'Please add guidelines for contributing to the repository:'
     },
     {
         type: 'list',
@@ -41,6 +44,36 @@ inquirer
             'MIT License', 
             'Boost Software License 1.0', 
             'The Unlicense',
-        ],
+        ]},
+    {
+        type: 'input',
+        name: 'Tests',
+        message: 'Please provide instructions on how to run tests on the application:'
     },
-  ])
+    {
+        type: 'input',
+        name: 'Questions',
+        message: 'Please provide instructions on how to reach you with additional questions:'
+    },
+  ];
+
+// function to write README file
+function writeToFile(filename, data) {
+    fs.writeFile(filename, data, err => {
+        if (err) {
+          return console.log(err);
+        }
+        console.log("Your README.md file has been generated.")
+    });
+}
+
+// function to initialize program
+function init() {
+prompt(questions).then(answers => {
+    const response = generateMarkdown(answers);
+    console.log(answers);
+    writeToFile("README.md", response);
+})
+};
+
+init();
